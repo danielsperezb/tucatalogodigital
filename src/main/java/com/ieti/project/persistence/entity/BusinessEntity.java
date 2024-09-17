@@ -36,7 +36,7 @@ public class BusinessEntity {
     private Integer key_code;
 
     @OneToMany(mappedBy = "business")
-    private List<ProductsEntity> products;
+    private List<CategoriesEntity> categories;
 
 }
 

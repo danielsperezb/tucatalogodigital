@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "products")
 @Getter
@@ -33,11 +35,7 @@ public class ProductsEntity {
     @Column(nullable = false, length = 20)
     private Integer quantity;
 
-    @Column(nullable = false)
-    private Integer business_id;
-
-    @ManyToOne
-    @JoinColumn(name = "business_id", referencedColumnName = "business_id", insertable = false,updatable = false)
-    private BusinessEntity business;
+    @ManyToMany(mappedBy = "products")
+    private Set<CategoriesEntity> categories;
 
 }
