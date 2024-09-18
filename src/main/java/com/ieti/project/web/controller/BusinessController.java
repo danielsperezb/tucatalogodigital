@@ -37,7 +37,6 @@ public class BusinessController {
         return ResponseEntity.badRequest().build();
     }
 
-
     @PutMapping
     public ResponseEntity<BusinessEntity> update(@RequestBody BusinessEntity business){
         if (business.getBusinessId() != null && this.businessService.exists(business.getBusinessId())){
@@ -45,5 +44,17 @@ public class BusinessController {
         }
         return ResponseEntity.badRequest().build();
     }
+
+    @DeleteMapping("/{businessId}")
+    public ResponseEntity<Void> delete(@PathVariable int businessId){
+        if (this.businessService.exists(businessId)){
+            this.businessService.delete(businessId);
+            return ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
+
 
 }

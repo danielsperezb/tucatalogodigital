@@ -22,12 +22,16 @@ public class BusinessService {
         return this.businessRepository.findAll();
     }
 
-    public BusinessEntity get(int idPizza){
-        return this.businessRepository.findById(idPizza).orElse(null);
+    public BusinessEntity get(int businessId){
+        return this.businessRepository.findById(businessId).orElse(null);
     }
 
     public BusinessEntity save(BusinessEntity business){
         return this.businessRepository.save(business);
+    }
+
+    public void delete(int businessId){
+        this.businessRepository.deleteById(businessId);
     }
 
     public boolean exists(int businessId){
