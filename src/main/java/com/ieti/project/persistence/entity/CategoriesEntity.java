@@ -1,6 +1,7 @@
 package com.ieti.project.persistence.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class CategoriesEntity {
 
     @ManyToOne
     @JoinColumn(name = "business_id", referencedColumnName = "business_id", insertable = false,updatable = false)
+    @JsonIgnore
     private BusinessEntity business;
 
     @ManyToMany
