@@ -3,9 +3,11 @@ package com.ieti.project.service;
 import com.ieti.project.persistence.entity.ImageTemplateEntity;
 import com.ieti.project.persistence.repository.ImageTemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ImageTemplateService {
 
     private final ImageTemplateRepository imageTemplateRepository;

@@ -5,9 +5,11 @@ import com.ieti.project.persistence.entity.TemplateEntity;
 import com.ieti.project.persistence.repository.ProductsRepository;
 import com.ieti.project.persistence.repository.TemplateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TemplateService {
 
 
