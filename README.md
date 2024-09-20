@@ -29,3 +29,9 @@ En el repositorio, encontrarás:
 
 - **MockUp**: Contiene el diseño de la interfaz de la plataforma.
 - **Diagrama BD**: Estructura de la base de datos utilizada para la gestión de la información.
+
+
+## Video Demostrativo (Sprint 1)
+
+[Ver video en YouTube](https://youtu.be/II0K-ForOz0)
+
