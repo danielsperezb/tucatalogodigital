@@ -1,7 +1,7 @@
 package com.ieti.project.service;
 
 import com.ieti.project.persistence.entity.CategoriesEntity;
-import com.ieti.project.persistence.repository.categoriesRepository;
+import com.ieti.project.persistence.repository.CategoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
