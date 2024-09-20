@@ -39,7 +39,7 @@ public class ContactController {
     @PutMapping
     public ResponseEntity<ContactEntity> update(@RequestBody ContactEntity contact){
         if (contact.getContactId() != null && this.contactService.exists(contact.getContactId())){
-            return ResponseEntity.ok(this.categoriesService.save(contact));
+            return ResponseEntity.ok(this.contactService.save(contact));
         }
         return ResponseEntity.badRequest().build();
     }
