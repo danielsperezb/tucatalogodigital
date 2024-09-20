@@ -38,4 +38,9 @@ public class ProductsEntity {
     @ManyToMany(mappedBy = "products")
     private Set<CategoriesEntity> categories;
 
+    @ManyToMany(mappedBy = "products")
+    private Set<ShoppingCartEntity> shoppingCarts;
+
+
+
 }
