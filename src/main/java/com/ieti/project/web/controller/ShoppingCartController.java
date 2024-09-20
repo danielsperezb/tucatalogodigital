@@ -3,6 +3,7 @@ package com.ieti.project.web.controller;
 import com.ieti.project.persistence.entity.BusinessEntity;
 import com.ieti.project.persistence.entity.ShoppingCartEntity;
 import com.ieti.project.service.BusinessService;
+import com.ieti.project.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +27,12 @@ public class ShoppingCartController {
     }
 
     @GetMapping("/{shoppingCartId}")
-    public ResponseEntity<BusinessEntity> get(@PathVariable int shoppingCartId){
+    public ResponseEntity<ShoppingCartEntity> get(@PathVariable int shoppingCartId){
         return ResponseEntity.ok(this.shoppingCartService.get(shoppingCartId));
     }
 
     @PostMapping
-    public ResponseEntity<BusinessEntity> add(@RequestBody ShoppingCartEntity shoppingCart){
+    public ResponseEntity<ShoppingCartEntity> add(@RequestBody ShoppingCartEntity shoppingCart){
         if (shoppingCart.getShoppingCartId() == null || !this.shoppingCartService.exists(shoppingCart.getShoppingCartId())){
             return ResponseEntity.ok(this.shoppingCartService.save(shoppingCart));
         }
@@ -39,7 +40,7 @@ public class ShoppingCartController {
     }
 
     @PutMapping
-    public ResponseEntity<BusinessEntity> update(@RequestBody ShoppingCartEntity shoppingCart){
+    public ResponseEntity<ShoppingCartEntity> update(@RequestBody ShoppingCartEntity shoppingCart){
         if (shoppingCart.getShoppingCartId() != null && this.shoppingCartService.exists(shoppingCart.getShoppingCartId())){
             return ResponseEntity.ok(this.shoppingCartService.save(shoppingCart));
         }
