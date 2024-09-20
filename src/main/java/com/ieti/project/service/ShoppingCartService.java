@@ -4,9 +4,11 @@ package com.ieti.project.service;
 import com.ieti.project.persistence.entity.ShoppingCartEntity;
 import com.ieti.project.persistence.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ShoppingCartService {
 
     private final ShoppingCartRepository shoppingCartRepository;
