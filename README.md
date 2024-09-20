@@ -10,7 +10,7 @@ Nuestra plataforma se enfoca en facilitar la digitalización y el crecimiento de
 
 - **Creación rápida de tiendas y menús digitales**: Diseña y personaliza tu tienda o menú sin complicaciones.
 - **Optimización móvil**: Todas nuestras plantillas están diseñadas para funcionar de manera óptima en dispositivos móviles.
-- **Gestión de pagos integrada**: Soporte para múltiples pasarelas de pago como Epayco, PayU, Wompi, y Bold.
+- **Gestión de pagos integrada**: Soporte para pasarelas de pago Epayco
 - **Soporte técnico**: Asistencia disponible para la configuración y uso de la plataforma.
 - **Educación y soporte**: Guías educativas y soporte continuo para mejorar tu experiencia.
 
