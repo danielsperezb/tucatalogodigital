@@ -20,6 +20,9 @@ public class TemplateEntity {
     @Column(name = "template_id" , nullable = false)
     private Integer templateId;
 
+    @Column(name = "business_id")
+    private Integer businessId;
+
     @Column(nullable = false, length = 250)
     private String logo;
 

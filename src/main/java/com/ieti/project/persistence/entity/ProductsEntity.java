@@ -17,7 +17,7 @@ public class ProductsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id",nullable = false)
+    @Column(name = "products_id",nullable = false)
     private Integer productId;
 
     @Column(nullable = false, length = 100)
@@ -40,7 +40,5 @@ public class ProductsEntity {
 
     @ManyToMany(mappedBy = "products")
     private Set<ShoppingCartEntity> shoppingCarts;
-
-
 
 }
