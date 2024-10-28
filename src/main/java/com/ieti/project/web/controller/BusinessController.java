@@ -1,5 +1,6 @@
 package com.ieti.project.web.controller;
 
+import com.ieti.project.dto.BusinessDTO;
 import com.ieti.project.persistence.entity.BusinessEntity;
 import com.ieti.project.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,17 @@ public class BusinessController {
     }
 
     @GetMapping
-    public ResponseEntity<List<BusinessEntity>> getAll(){
+    public ResponseEntity<List<BusinessDTO>> getAll(){
         return ResponseEntity.ok(this.businessService.getAll());
     }
 
     @GetMapping("/{businessId}")
-    public ResponseEntity<BusinessEntity> get(@PathVariable int businessId){
+    public ResponseEntity<BusinessDTO> get(@PathVariable int businessId){
         return ResponseEntity.ok(this.businessService.get(businessId));
     }
 
     @PostMapping
-    public ResponseEntity<BusinessEntity> add(@RequestBody BusinessEntity business){
+    public ResponseEntity<BusinessDTO> add(@RequestBody BusinessEntity business){
         if (business.getBusinessId() == null || !this.businessService.exists(business.getBusinessId())){
             return ResponseEntity.ok(this.businessService.save(business));
         }
@@ -38,7 +39,7 @@ public class BusinessController {
     }
 
     @PutMapping
-    public ResponseEntity<BusinessEntity> update(@RequestBody BusinessEntity business){
+    public ResponseEntity<BusinessDTO> update(@RequestBody BusinessEntity business){
         if (business.getBusinessId() != null && this.businessService.exists(business.getBusinessId())){
             return ResponseEntity.ok(this.businessService.save(business));
         }
@@ -54,7 +55,5 @@ public class BusinessController {
 
         return ResponseEntity.badRequest().build();
     }
-
-
 
 }
