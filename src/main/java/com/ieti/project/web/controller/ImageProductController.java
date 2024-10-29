@@ -2,6 +2,7 @@ package com.ieti.project.web.controller;
 
 
 
+import com.ieti.project.dto.ImageProductDTO;
 import com.ieti.project.persistence.entity.ImageProductEntity;
 import com.ieti.project.service.ImageProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,17 @@ public class ImageProductController {
     }
 
     @GetMapping
-        public ResponseEntity<List<ImageProductEntity>> getAll(){
+        public ResponseEntity<List<ImageProductDTO>> getAll(){
         return ResponseEntity.ok(this.imageProductService.getAll());
     }
 
     @GetMapping("/{imageProductId}")
-    public ResponseEntity<ImageProductEntity> get(@PathVariable int imageProductId){
+    public ResponseEntity<ImageProductDTO> get(@PathVariable int imageProductId){
         return ResponseEntity.ok(this.imageProductService.get(imageProductId));
     }
 
     @PostMapping
-    public ResponseEntity<ImageProductEntity> add(@RequestBody ImageProductEntity imageProduct){
+    public ResponseEntity<ImageProductDTO> add(@RequestBody ImageProductEntity imageProduct){
         if (imageProduct.getImagesProductId() == null || !this.imageProductService.exists(imageProduct.getImagesProductId())){
             return ResponseEntity.ok(this.imageProductService.save(imageProduct));
         }
@@ -41,7 +42,7 @@ public class ImageProductController {
     }
 
     @PutMapping
-    public ResponseEntity<ImageProductEntity> update(@RequestBody ImageProductEntity imageProduct){
+    public ResponseEntity<ImageProductDTO> update(@RequestBody ImageProductEntity imageProduct){
         if (imageProduct.getImagesProductId() != null && this.imageProductService.exists(imageProduct.getImagesProductId())){
             return ResponseEntity.ok(this.imageProductService.save(imageProduct));
         }
@@ -57,7 +58,5 @@ public class ImageProductController {
 
         return ResponseEntity.badRequest().build();
     }
-
-
 
 }

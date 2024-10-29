@@ -2,18 +2,20 @@ package com.ieti.project.dto;
 
 import java.util.Set;
 
-public class CategoriesDTO {
+public class CategoryDTO {
 
-    private Integer categoryId;
+    private Integer categoryId; // Se generará automáticamente en creación, pero se usa en la salida.
     private String name;
     private String imgName;
-    private Integer businessId;
-    private Set<Integer> productIds;
+    private Integer businessId; // Asocia la categoría con un negocio
+    private Set<Integer> productIds; // IDs de los productos asociados
 
-    public CategoriesDTO() {
+    // Constructor sin argumentos (requerido para serialización)
+    public CategoryDTO() {
     }
 
-    public CategoriesDTO(Integer categoryId, String name, String imgName, Integer businessId, Set<Integer> productIds) {
+    // Constructor completo
+    public CategoryDTO(Integer categoryId, String name, String imgName, Integer businessId, Set<Integer> productIds) {
         this.categoryId = categoryId;
         this.name = name;
         this.imgName = imgName;
@@ -21,6 +23,7 @@ public class CategoriesDTO {
         this.productIds = productIds;
     }
 
+    // Getters y Setters
     public Integer getCategoryId() {
         return categoryId;
     }

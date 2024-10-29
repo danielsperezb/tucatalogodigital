@@ -1,6 +1,7 @@
 package com.ieti.project.web.controller;
 
 
+import com.ieti.project.dto.ImageTemplateDTO;
 import com.ieti.project.persistence.entity.ImageProductEntity;
 import com.ieti.project.persistence.entity.ImageTemplateEntity;
 import com.ieti.project.service.ImageProductService;
@@ -23,17 +24,17 @@ public class ImageTemplateController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ImageTemplateEntity>> getAll(){
+    public ResponseEntity<List<ImageTemplateDTO>> getAll(){
         return ResponseEntity.ok(this.imageTemplateService.getAll());
     }
 
     @GetMapping("/{imageProductId}")
-    public ResponseEntity<ImageTemplateEntity> get(@PathVariable int imageTemplateId){
+    public ResponseEntity<ImageTemplateDTO> get(@PathVariable int imageTemplateId){
         return ResponseEntity.ok(this.imageTemplateService.get(imageTemplateId));
     }
 
     @PostMapping
-    public ResponseEntity<ImageTemplateEntity> add(@RequestBody ImageTemplateEntity imageTemplate){
+    public ResponseEntity<ImageTemplateDTO> add(@RequestBody ImageTemplateEntity imageTemplate){
         if (imageTemplate.getImagesTemplateId() == null || !this.imageTemplateService.exists(imageTemplate.getImagesTemplateId())){
             return ResponseEntity.ok(this.imageTemplateService.save(imageTemplate));
         }
@@ -41,7 +42,7 @@ public class ImageTemplateController {
     }
 
     @PutMapping
-    public ResponseEntity<ImageTemplateEntity> update(@RequestBody ImageTemplateEntity imageTemplate){
+    public ResponseEntity<ImageTemplateDTO> update(@RequestBody ImageTemplateEntity imageTemplate){
         if (imageTemplate.getImagesTemplateId() != null && this.imageTemplateService.exists(imageTemplate.getImagesTemplateId())){
             return ResponseEntity.ok(this.imageTemplateService.save(imageTemplate));
         }
@@ -57,6 +58,5 @@ public class ImageTemplateController {
 
         return ResponseEntity.badRequest().build();
     }
-
 
 }

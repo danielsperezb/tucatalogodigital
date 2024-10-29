@@ -2,7 +2,7 @@ package com.ieti.project.service;
 
 
 import com.ieti.project.dto.BusinessDTO;
-import com.ieti.project.dto.CategoriesDTO;
+import com.ieti.project.dto.CategoryDTO;
 import com.ieti.project.persistence.entity.BusinessEntity;
 import com.ieti.project.persistence.entity.ProductsEntity;
 import com.ieti.project.persistence.repository.BusinessRepository;
@@ -58,7 +58,7 @@ public class BusinessService {
                 businessEntity.getDeathDate(),
                 businessEntity.getKey_code(),
                 businessEntity.getCategories().stream()
-                        .map(category -> new CategoriesDTO(
+                        .map(category -> new CategoryDTO(
                                 category.getCategoryId(),
                                 category.getName(),
                                 category.getImgName(),

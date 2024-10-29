@@ -15,7 +15,8 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public ProductDTO(Integer productId, String title, Integer price, String description, Integer state, Integer quantity, Set<Integer> categoryIds) {
+    public ProductDTO(Integer productId, String title, Integer price, String description,
+                      Integer state, Integer quantity, Set<Integer> categoryIds) {
         this.productId = productId;
         this.title = title;
         this.price = price;

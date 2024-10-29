@@ -1,5 +1,6 @@
 package com.ieti.project.web.controller;
 
+import com.ieti.project.dto.CategoryDTO;
 import com.ieti.project.persistence.entity.CategoriesEntity;
 import com.ieti.project.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,17 @@ public class CategoriesController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoriesEntity>> getAll(){
+    public ResponseEntity<List<CategoryDTO>> getAll(){
         return ResponseEntity.ok(this.categoriesService.getAll());
     }
 
     @GetMapping("/{categoryId}")
-    public ResponseEntity<CategoriesEntity> get(@PathVariable int categoryId){
+    public ResponseEntity<CategoryDTO> get(@PathVariable int categoryId){
         return ResponseEntity.ok(this.categoriesService.get(categoryId));
     }
 
     @PostMapping
-    public ResponseEntity<CategoriesEntity> add(@RequestBody CategoriesEntity categories){
+    public ResponseEntity<CategoryDTO> add(@RequestBody CategoriesEntity categories){
         if (categories.getCategoryId() == null || !this.categoriesService.exists(categories.getCategoryId())){
             return ResponseEntity.ok(this.categoriesService.save(categories));
         }
@@ -38,7 +39,7 @@ public class CategoriesController {
     }
 
     @PutMapping
-    public ResponseEntity<CategoriesEntity> update(@RequestBody CategoriesEntity categories){
+    public ResponseEntity<CategoryDTO> update(@RequestBody CategoriesEntity categories){
         if (categories.getCategoryId() != null && this.categoriesService.exists(categories.getCategoryId())){
             return ResponseEntity.ok(this.categoriesService.save(categories));
         }

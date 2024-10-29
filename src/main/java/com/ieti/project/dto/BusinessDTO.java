@@ -10,12 +10,12 @@ public class BusinessDTO {
     private Date creationDate;
     private Date deathDate;
     private Integer key_code;
-    private List<CategoriesDTO> categories;
+    private List<CategoryDTO> categories;
 
     public BusinessDTO() {
     }
 
-    public BusinessDTO(Integer businessId, String name, Date creationDate, Date deathDate, Integer key_code, List<CategoriesDTO> categories) {
+    public BusinessDTO(Integer businessId, String name, Date creationDate, Date deathDate, Integer key_code, List<CategoryDTO> categories) {
         this.businessId = businessId;
         this.name = name;
         this.creationDate = creationDate;
@@ -64,11 +64,11 @@ public class BusinessDTO {
         this.key_code = key_code;
     }
 
-    public List<CategoriesDTO> getCategories() {
+    public List<CategoryDTO> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<CategoriesDTO> categories) {
+    public void setCategories(List<CategoryDTO> categories) {
         this.categories = categories;
     }
 

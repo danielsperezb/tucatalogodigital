@@ -1,5 +1,6 @@
 package com.ieti.project.web.controller;
 
+import com.ieti.project.dto.ProductDTO;
 import com.ieti.project.persistence.entity.ProductsEntity;
 import com.ieti.project.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,17 @@ public class ProductsController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductsEntity>> getAll(){
+    public ResponseEntity<List<ProductDTO>> getAll(){
         return ResponseEntity.ok(this.productsService.getAll());
     }
 
     @GetMapping("/{productsId}")
-    public ResponseEntity<ProductsEntity> get(@PathVariable int productsId){
+    public ResponseEntity<ProductDTO> get(@PathVariable int productsId){
         return ResponseEntity.ok(this.productsService.get(productsId));
     }
 
     @PostMapping
-    public ResponseEntity<ProductsEntity> add(@RequestBody ProductsEntity products){
+    public ResponseEntity<ProductDTO> add(@RequestBody ProductsEntity products){
         if (products.getProductId() == null || !this.productsService.exists(products.getProductId())){
             return ResponseEntity.ok(this.productsService.save(products));
         }
@@ -39,7 +40,7 @@ public class ProductsController {
     }
 
     @PutMapping
-    public ResponseEntity<ProductsEntity> update(@RequestBody ProductsEntity products){
+    public ResponseEntity<ProductDTO> update(@RequestBody ProductsEntity products){
         if (products.getProductId() != null && this.productsService.exists(products.getProductId())){
             return ResponseEntity.ok(this.productsService.save(products));
         }

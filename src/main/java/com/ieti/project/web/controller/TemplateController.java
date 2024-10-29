@@ -1,5 +1,6 @@
 package com.ieti.project.web.controller;
 
+import com.ieti.project.dto.TemplateDTO;
 import com.ieti.project.persistence.entity.BusinessEntity;
 import com.ieti.project.persistence.entity.TemplateEntity;
 import com.ieti.project.service.BusinessService;
@@ -22,17 +23,17 @@ public class TemplateController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TemplateEntity>> getAll(){
+    public ResponseEntity<List<TemplateDTO>> getAll(){
         return ResponseEntity.ok(this.templateService.getAll());
     }
 
     @GetMapping("/{templateId}")
-    public ResponseEntity<TemplateEntity> get(@PathVariable int templateId){
+    public ResponseEntity<TemplateDTO> get(@PathVariable int templateId){
         return ResponseEntity.ok(this.templateService.get(templateId));
     }
 
     @PostMapping
-    public ResponseEntity<TemplateEntity> add(@RequestBody TemplateEntity template){
+    public ResponseEntity<TemplateDTO> add(@RequestBody TemplateEntity template){
         if (template.getTemplateId() == null || !this.templateService.exists(template.getTemplateId())){
             return ResponseEntity.ok(this.templateService.save(template));
         }
@@ -40,7 +41,7 @@ public class TemplateController {
     }
 
     @PutMapping
-    public ResponseEntity<TemplateEntity> update(@RequestBody TemplateEntity template){
+    public ResponseEntity<TemplateDTO> update(@RequestBody TemplateEntity template){
         if (template.getTemplateId() != null && this.templateService.exists(template.getTemplateId())){
             return ResponseEntity.ok(this.templateService.save(template));
         }

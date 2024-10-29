@@ -1,11 +1,14 @@
 package com.ieti.project.service;
 
+import com.ieti.project.dto.ImageProductDTO;
 import com.ieti.project.persistence.entity.ImageProductEntity;
 import com.ieti.project.persistence.repository.ImageProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class ImageProductService {
@@ -17,16 +20,20 @@ public class ImageProductService {
         this.imageProductRepository = imageProductRepository;
     }
 
-    public List<ImageProductEntity> getAll(){
-        return this.imageProductRepository.findAll();
+    public List<ImageProductDTO> getAll(){
+        return this.imageProductRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    public ImageProductEntity get(int imagesProductId){
-        return this.imageProductRepository.findById(imagesProductId).orElse(null);
+    public ImageProductDTO get(int imagesProductId){
+        return this.imageProductRepository.findById(imagesProductId)
+                .map(this::convertToDTO)
+                .orElseThrow(() -> new NoSuchElementException("Image Product not found with ID: " + imagesProductId));
     }
 
-    public ImageProductEntity save(ImageProductEntity imageProduct){
-        return this.imageProductRepository.save(imageProduct);
+    public ImageProductDTO save(ImageProductEntity imageProduct){
+        return convertToDTO(this.imageProductRepository.save(imageProduct));
     }
 
     public void delete(int imagesProductId){
@@ -35,6 +42,14 @@ public class ImageProductService {
 
     public boolean exists(int imagesProductId){
         return this.imageProductRepository.existsById(imagesProductId);
+    }
+
+    private ImageProductDTO convertToDTO(ImageProductEntity entity) {
+        return new ImageProductDTO(
+                entity.getImagesProductId(),
+                entity.getNameImg(),
+                entity.getProductsEntity() != null ? entity.getProductsEntity().getProductId() : null
+        );
     }
 
 }
