@@ -23,7 +23,7 @@ public class BusinessEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 300)
     private String password;
 
     @Column(name = "creation_date", nullable = false)
