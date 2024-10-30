@@ -35,6 +35,9 @@ public class TemplateEntity {
     @Column(name = "seccion_two", nullable = false, length = 250)
     private String seccionTwo;
 
+    @Column(name = "business_id", nullable = false)
+    private Integer businessId;
+
     @OneToOne
     @JoinColumn(name = "business_id", referencedColumnName = "business_id", insertable = false, updatable = false)
     private BusinessEntity businessEntity;
