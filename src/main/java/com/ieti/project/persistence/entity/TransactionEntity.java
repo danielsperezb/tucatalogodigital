@@ -54,5 +54,5 @@ public class TransactionEntity {
     @Column(name = "amountTotal",nullable = false, length = 20)
     private String amountTotal;
 
-    
+
 }

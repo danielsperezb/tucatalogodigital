@@ -39,4 +39,3 @@ public class BusinessEntity {
     private List<CategoriesEntity> categories;
 
 }
-

@@ -35,9 +35,9 @@ public class CategoriesEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "category_product",
-            joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+            name = "category_product", // Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "category_id"), // Columna de la clave foránea que hace referencia a Estudiante
+            inverseJoinColumns = @JoinColumn(name = "product_id") // Columna de la clave foránea que hace referencia a Curso
     )
 
     private Set<ProductsEntity> products;
