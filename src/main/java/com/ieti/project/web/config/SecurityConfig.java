@@ -2,7 +2,9 @@ package com.ieti.project.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,10 +28,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF
                 .authorizeHttpRequests(authorize -> authorize
-                        // Permitir todas las solicitudes GET a /api/**
+                        .requestMatchers("/api/auth/*").permitAll()
+                        // Permitir todas las solicitudes GET a /api/*
                         .requestMatchers(HttpMethod.GET, "/api/*").hasAnyRole("ADMIN","CUSTOMER")
                         .requestMatchers(HttpMethod.POST, "/api/*").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT).hasRole("ADMIN")
+                        .requestMatchers("/api/shoppingCart").hasAuthority("random_order")
                         // Requerir autenticación para cualquier otra solicitud
                         .anyRequest().authenticated()
                 )
@@ -50,6 +54,11 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // Aplicar configuración a todas las rutas
         return source;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
     }
 
 
