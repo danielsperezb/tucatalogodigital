@@ -35,3 +35,7 @@ En el repositorio, encontrarás:
 
 [Ver video en YouTube](https://youtu.be/II0K-ForOz0)
 
+## Video Demostrativo (Sprint 2)
+
+[Ver video en YouTube](https://www.youtube.com/watch?v=arT27CHkapU)
+
