@@ -39,3 +39,7 @@ En el repositorio, encontrarás:
 
 [Ver video en YouTube](https://www.youtube.com/watch?v=arT27CHkapU)
 
+## Video Demostrativo (Sprint 3)
+
+[Ver video en YouTube](https://www.youtube.com/watch?v=arT27CHkapU)
+
